@@ -3,17 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes Sharing Club</title>
+    <title>KUET Resource Sharing Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            position: relative;
+            margin-bottom: 30px;
+            padding-top: 10px;
+        }
+        .register-btn {
+            position: absolute;
+            top: 10px;
+            right: 0;
+        }
+        .header h1 {
+            margin-top: 0;
+            padding-right: 120px;
+        }
+        .content {
+            clear: both;
+        }
+        .middle-section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+        .recent-files-section {
+            margin-top: 60px;
+            padding: 20px;
+            background-color: #e8f4f8;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Notes Sharing Club</h1>
-    <p>A place to share and access PDF notes for various courses.</p>
+    <div class="header">
+        <h1>Welcome to KUET Resource Sharing Club</h1>
+        <button class="register-btn">Register</button>
+    </div>
 
-    <h2>Actions</h2>
-    <button>Register</button>
-    <button>View Notes</button>
-    <button>Upload File</button>
-    <button>Download Files</button>
+    <p><strong>About Us:</strong> KUET Resource Sharing Club is a dedicated platform for students to collaborate and share valuable academic resources. We provide hand notes, lecture notes, and research resources to help students succeed in their studies. Whether you're looking for course materials or want to contribute your own notes, you're in the right place!</p>
+
+    <div class="middle-section">
+        <h2>Actions</h2>
+        <button>View Notes</button>
+        <button>Upload File</button>
+    </div>
 
     <h2>Search Notes</h2>
     <form>
@@ -31,5 +71,10 @@
 
         <button type="submit">Search</button>
     </form>
+
+    <div class="recent-files-section">
+        <h2>Recent Files</h2>
+        <p>Check back soon for recently uploaded resources!</p>
+    </div>
 </body>
 </html>
