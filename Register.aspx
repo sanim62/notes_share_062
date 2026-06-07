@@ -67,6 +67,14 @@
                         <label for="DOBTextBox">Date of Birth</label>
                         <asp:TextBox ID="DOBTextBox" runat="server" CssClass="text-input" TextMode="Date" Required="true" />
                     </div>
+                    <div>
+                        <label for="PasswordTextBox">Password</label>
+                        <asp:TextBox ID="PasswordTextBox" runat="server" CssClass="text-input" TextMode="Password" Required="true" />
+                    </div>
+                    <div>
+                        <label for="ConfirmPasswordTextBox">Confirm Password</label>
+                        <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" CssClass="text-input" TextMode="Password" Required="true" />
+                    </div>
                     <asp:Panel ID="StudentPanel" runat="server" Visible="false">
                         <div>
                             <label for="YearDropDownList">Current Year</label>

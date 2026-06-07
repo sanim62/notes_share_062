@@ -13,7 +13,11 @@
             <div class="header">
                 <h1>Welcome to KUET Resource Sharing Club</h1>
                 <p>KUET Resource Sharing Club is a dedicated platform for students to collaborate and share valuable academic resources. We provide hand notes, lecture notes, and research resources to help students succeed in their studies.</p>
-                <asp:Button ID="RegisterButton" runat="server" CssClass="register-btn" Text="Register" OnClick="RegisterButton_Click" />
+                <div class="button-group" style="margin-top: 24px;">
+                    <a href="UserLogin.aspx" class="register-btn" style="position: relative; top: auto; right: auto; background-color: var(--text);">Student Login</a>
+                    <a href="FacultyLogin.aspx" class="register-btn" style="position: relative; top: auto; right: auto; background-color: var(--text);">Faculty Login</a>
+                    <asp:Button ID="RegisterButton" runat="server" CssClass="register-btn" style="position: relative; top: auto; right: auto;" Text="Register" OnClick="RegisterButton_Click" />
+                </div>
             </div>
 
             <div class="card">

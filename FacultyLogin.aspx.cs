@@ -7,7 +7,7 @@ using System.Text;
 
 namespace web_progress_report
 {
-    public partial class UserLogin : Page
+    public partial class FacultyLogin : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,10 +30,10 @@ namespace web_progress_report
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            string rollNumber = IDTextBox.Text.Trim();
+            string universityId = IDTextBox.Text.Trim();
             string password = PasswordTextBox.Text;
 
-            if (!string.IsNullOrEmpty(rollNumber) && !string.IsNullOrEmpty(password))
+            if (!string.IsNullOrEmpty(universityId) && !string.IsNullOrEmpty(password))
             {
                 bool isAuthenticated = false;
                 string hashedPassword = HashPassword(password);
@@ -44,10 +44,10 @@ namespace web_progress_report
                     using (SqlConnection conn = new SqlConnection(connStr))
                     {
                         conn.Open();
-                        string query = "SELECT COUNT(1) FROM Users WHERE UserId = @UserId AND PasswordHash = @PasswordHash AND UserType = 'Student'";
+                        string query = "SELECT COUNT(1) FROM Users WHERE UserId = @UserId AND PasswordHash = @PasswordHash AND UserType = 'Faculty'";
                         using (SqlCommand cmd = new SqlCommand(query, conn))
                         {
-                            cmd.Parameters.AddWithValue("@UserId", rollNumber);
+                            cmd.Parameters.AddWithValue("@UserId", universityId);
                             cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
 
                             int count = Convert.ToInt32(cmd.ExecuteScalar());
@@ -67,21 +67,21 @@ namespace web_progress_report
 
                 if (isAuthenticated)
                 {
-                    Session["UserId"] = rollNumber;
-                    Session["UserType"] = "Student";
-                    StatusLabel.Text = "Login successful for Student: " + rollNumber;
+                    Session["UserId"] = universityId;
+                    Session["UserType"] = "Faculty";
+                    StatusLabel.Text = "Login successful for Faculty: " + universityId;
                     StatusLabel.CssClass = "status-label success";
                     // Response.Redirect("ManageUsers.aspx");
                 }
                 else
                 {
-                    StatusLabel.Text = "Invalid roll number or password.";
+                    StatusLabel.Text = "Invalid university ID or password.";
                     StatusLabel.CssClass = "status-label error";
                 }
             }
             else
             {
-                StatusLabel.Text = "Please enter both roll number and password.";
+                StatusLabel.Text = "Please enter both university ID and password.";
                 StatusLabel.CssClass = "status-label error";
             }
         }

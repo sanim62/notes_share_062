@@ -21,6 +21,8 @@ namespace web_progress_report
         protected global::System.Web.UI.WebControls.DropDownList GenderDropDownList;
         protected global::System.Web.UI.WebControls.DropDownList DepartmentDropDownList;
         protected global::System.Web.UI.WebControls.TextBox DOBTextBox;
+        protected global::System.Web.UI.WebControls.TextBox PasswordTextBox;
+        protected global::System.Web.UI.WebControls.TextBox ConfirmPasswordTextBox;
         protected global::System.Web.UI.WebControls.Panel StudentPanel;
         protected global::System.Web.UI.WebControls.DropDownList YearDropDownList;
         protected global::System.Web.UI.WebControls.DropDownList SemesterDropDownList;
