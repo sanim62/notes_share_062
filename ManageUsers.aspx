@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manage Users - KUET Resource Sharing Club</title>
-    <link rel="stylesheet" href="styles.css?v=1" />
+    <link rel="stylesheet" href="styles.css?v=3" />
     <style>
         .grid-view {
             width: 100%;
@@ -117,7 +117,7 @@
             </div>
 
             <div class="card">
-                <a class="register-btn" style="position: relative; top: auto; right: auto;" href="Default.aspx">Back to Home</a>
+                <a class="register-btn" href="AdminDashboard.aspx">Back to Dashboard</a>
             </div>
         </div>
     </form>

@@ -1,4 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace web_progress_report
 {
@@ -6,11 +11,7 @@ namespace web_progress_report
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
 
-        protected void RegisterButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Register.aspx");
         }
     }
 }

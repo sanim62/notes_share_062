@@ -51,10 +51,15 @@ body {
     line-height: 1.75;
 }
 
-.register-btn {
+.header-actions {
     position: absolute;
     top: 32px;
     right: 32px;
+    display: flex;
+    gap: 12px;
+}
+
+.register-btn {
     padding: 12px 22px;
     border: none;
     border-radius: 999px;

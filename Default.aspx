@@ -4,87 +4,84 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KUET Resource Sharing Club</title>
-    <link rel="stylesheet" href="styles.css?v=1" />
+    <title>Welcome - KUET Resource Sharing Club</title>
+    <link rel="stylesheet" href="styles.css?v=3" />
+    <style>
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .role-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05);
+            transition: transform 200ms ease, box-shadow 200ms ease;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .role-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(15, 23, 42, 0.1);
+        }
+        .role-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            background: var(--primary-soft);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .role-card h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.5rem;
+        }
+        .role-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="page-wrap">
-            <div class="header">
-                <h1>Welcome to KUET Resource Sharing Club</h1>
-                <p>KUET Resource Sharing Club is a dedicated platform for students to collaborate and share valuable academic resources. We provide hand notes, lecture notes, and research resources to help students succeed in their studies.</p>
-                <div class="button-group" style="margin-top: 24px;">
-                    <a href="UserLogin.aspx" class="register-btn" style="position: relative; top: auto; right: auto; background-color: var(--text);">Student Login</a>
-                    <a href="FacultyLogin.aspx" class="register-btn" style="position: relative; top: auto; right: auto; background-color: var(--text);">Faculty Login</a>
-                    <asp:Button ID="RegisterButton" runat="server" CssClass="register-btn" style="position: relative; top: auto; right: auto;" Text="Register" OnClick="RegisterButton_Click" />
-                </div>
+        <div class="page-wrap" style="max-width: 1000px; padding-top: 64px;">
+            <div class="header" style="text-align: center; padding: 48px 32px;">
+                <h1>KUET Resource Sharing Club</h1>
+                <p style="margin: 0 auto;">Select your role to continue to the platform.</p>
             </div>
 
-            <div class="card">
-                <div class="section-title">
-                    <h2>Actions</h2>
-                </div>
-                <div class="action-buttons">
-                    <button type="button">View Notes</button>
-                    <button type="button">Upload File</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="section-title">
-                    <h2>Search Notes</h2>
-                </div>
-                <div class="search-form">
-                    <div>
-                        <label for="department">Department</label>
-                        <input type="text" id="department" name="department" placeholder="e.g. CSE" />
-                    </div>
-                    <div>
-                        <label for="course">Course</label>
-                        <input type="text" id="course" name="course" placeholder="e.g. Data Structures" />
-                    </div>
-                    <div>
-                        <label for="chapter">Chapter</label>
-                        <input type="text" id="chapter" name="chapter" placeholder="e.g. Graph Theory" />
-                    </div>
-                    <div>
-                        <label for="topic">Topic</label>
-                        <input type="text" id="topic" name="topic" placeholder="e.g. BFS / DFS" />
-                    </div>
-                    <button type="button">Search</button>
-                </div>
-            </div>
-
-            <div class="recent-files-section">
-                <div class="section-title">
-                    <h2>Recent Files</h2>
-                </div>
-                <div class="recent-files-card">
-                    <ul>
-                        <li>
-                            <strong>Lecture Notes: Operating Systems</strong>
-                            <span>Uploaded 2 hours ago • CSE</span>
-                        </li>
-                        <li>
-                            <strong>Handwritten Notes: Linear Algebra</strong>
-                            <span>Uploaded yesterday • EEE</span>
-                        </li>
-                        <li>
-                            <strong>Project Guide: Web Development</strong>
-                            <span>Uploaded 3 days ago • CSE</span>
-                        </li>
-                        <li>
-                            <strong>Research Paper Summary: AI Ethics</strong>
-                            <span>Uploaded 4 days ago • BBA</span>
-                        </li>
-                        <li>
-                            <strong>Sample Questions: Mathematics</strong>
-                            <span>Uploaded 1 week ago • CSE</span>
-                        </li>
-                    </ul>
-                </div>
+            <div class="role-cards">
+                <a href="Home.aspx" class="role-card">
+                    <div class="role-icon">&#128100;</div>
+                    <h2>User</h2>
+                    <p>Already a member? Log in as a student or faculty member to access resources.</p>
+                </a>
+                
+                <a href="Register.aspx" class="role-card">
+                    <div class="role-icon">&#128075;</div>
+                    <h2>New Comer</h2>
+                    <p>Just joined? Register for a new account to start sharing and learning.</p>
+                </a>
+                
+                <a href="AdminLogin.aspx" class="role-card">
+                    <div class="role-icon">&#128737;</div>
+                    <h2>Admin</h2>
+                    <p>Access the administrative dashboard to manage users and system settings.</p>
+                </a>
             </div>
         </div>
     </form>
 </body>
 </html>
+
