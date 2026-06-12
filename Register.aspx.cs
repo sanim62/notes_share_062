@@ -60,7 +60,28 @@ namespace web_progress_report
                             CurrentYear NVARCHAR(50),
                             CurrentSemester NVARCHAR(50),
                             PhotoPath NVARCHAR(255)
-                        )";
+                        );
+
+                        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Resources' and xtype='U')
+                        CREATE TABLE Resources (
+                            Id INT IDENTITY(1,1) PRIMARY KEY,
+                            UserId NVARCHAR(100),
+                            FileName NVARCHAR(255),
+                            FilePath NVARCHAR(500),
+                            Department NVARCHAR(100),
+                            Course NVARCHAR(100),
+                            Chapter NVARCHAR(100),
+                            Topic NVARCHAR(255),
+                            UploadDate DATETIME DEFAULT GETDATE()
+                        );
+
+                        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Downloads' and xtype='U')
+                        CREATE TABLE Downloads (
+                            Id INT IDENTITY(1,1) PRIMARY KEY,
+                            UserId NVARCHAR(100),
+                            ResourceId INT,
+                            DownloadDate DATETIME DEFAULT GETDATE()
+                        );";
                     using (SqlCommand cmd = new SqlCommand(createTableQuery, conn))
                     {
                         cmd.ExecuteNonQuery();
@@ -123,6 +144,14 @@ namespace web_progress_report
                 return;
             }
 
+            DateTime dob;
+            if (!DateTime.TryParse(DOBTextBox.Text, out dob) || dob.Year < 1753)
+            {
+                StatusLabel.Text = "Please enter a valid Date of Birth.";
+                StatusLabel.CssClass = "status-label error";
+                return;
+            }
+
             string filePath = "";
             if (PhotoFileUpload.HasFile)
             {
@@ -149,7 +178,7 @@ namespace web_progress_report
                         cmd.Parameters.AddWithValue("@UserId", IDTextBox.Text.Trim());
                         cmd.Parameters.AddWithValue("@Gender", GenderDropDownList.SelectedValue);
                         cmd.Parameters.AddWithValue("@Department", DepartmentDropDownList.SelectedValue);
-                        cmd.Parameters.AddWithValue("@DOB", Convert.ToDateTime(DOBTextBox.Text));
+                        cmd.Parameters.AddWithValue("@DOB", dob);
                         cmd.Parameters.AddWithValue("@PasswordHash", HashPassword(PasswordTextBox.Text));
                         cmd.Parameters.AddWithValue("@CurrentYear", UserTypeRadioButtonList.SelectedValue == "Student" ? YearDropDownList.SelectedValue : (object)DBNull.Value);
                         cmd.Parameters.AddWithValue("@CurrentSemester", UserTypeRadioButtonList.SelectedValue == "Student" ? SemesterDropDownList.SelectedValue : (object)DBNull.Value);
@@ -159,8 +188,10 @@ namespace web_progress_report
                     }
                 }
 
-                StatusLabel.Text = "Registration successful! Welcome to KUET Resource Sharing Club.";
-                StatusLabel.CssClass = "status-label success";
+                // Auto-login and redirect to dashboard
+                Session["UserId"] = IDTextBox.Text.Trim();
+                Session["UserType"] = UserTypeRadioButtonList.SelectedValue;
+                Response.Redirect("UserDashboard.aspx");
             }
             catch (SqlException ex)
             {
@@ -172,6 +203,11 @@ namespace web_progress_report
                 {
                     StatusLabel.Text = "Database error: " + ex.Message;
                 }
+                StatusLabel.CssClass = "status-label error";
+            }
+            catch (Exception ex)
+            {
+                StatusLabel.Text = "An error occurred: " + ex.Message;
                 StatusLabel.CssClass = "status-label error";
             }
         }

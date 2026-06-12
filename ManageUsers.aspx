@@ -18,14 +18,14 @@
             text-align: left;
         }
         .grid-view th {
-            background-color: #f2f2f2;
-            color: #333;
+            background-color: var(--border);
+            color: var(--text);
         }
         .grid-view tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: transparent;
         }
         .grid-view tr:hover {
-            background-color: #f1f1f1;
+            background-color: var(--border);
         }
         .action-btn {
             padding: 5px 10px;
@@ -58,7 +58,7 @@
         }
         .form-title {
             margin-bottom: 12px;
-            color: #333;
+            color: var(--text);
         }
     </style>
 </head>
@@ -121,5 +121,7 @@
             </div>
         </div>
     </form>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    <script src="theme.js"></script>
 </body>
 </html>

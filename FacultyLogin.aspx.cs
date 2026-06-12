@@ -71,7 +71,7 @@ namespace web_progress_report
                     Session["UserType"] = "Faculty";
                     StatusLabel.Text = "Login successful for Faculty: " + universityId;
                     StatusLabel.CssClass = "status-label success";
-                    // Response.Redirect("ManageUsers.aspx");
+                    Response.Redirect("UserDashboard.aspx");
                 }
                 else
                 {

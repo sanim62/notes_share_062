@@ -8,6 +8,60 @@
     --border: rgba(15, 23, 42, 0.08);
 }
 
+.dark-mode {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --primary: #38bdf8;
+    --primary-soft: #0c4a6e;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+}
+
+.dark-mode .header {
+    background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.1), transparent 40%),
+                linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+}
+
+.dark-mode .recent-files-card {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+}
+
+.dark-mode input[type="text"], .dark-mode .register-form .text-input {
+    background: #0f172a;
+    color: var(--text);
+}
+
+.theme-toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 160ms ease, transform 160ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: var(--text);
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 9999;
+}
+
+.theme-toggle:hover {
+    background: var(--border);
+    transform: scale(1.05);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -73,6 +127,17 @@ body {
 .register-btn:hover {
     transform: translateY(-1px);
     box-shadow: 0 12px 24px rgba(0, 119, 194, 0.18);
+}
+
+.secondary-btn {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.secondary-btn:hover {
+    background: var(--bg);
+    color: var(--text);
 }
 
 .card {

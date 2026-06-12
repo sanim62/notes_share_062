@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="web_progress_report.AdminDashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="web_progress_report.AdminDashboard" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,5 +56,8 @@
             </div>
         </div>
     </form>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    <script src="theme.js"></script>
 </body>
 </html>
+
